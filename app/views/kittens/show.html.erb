@@ -9,6 +9,12 @@
 </p>
 
 <div>
-  <%= link_to "Home", kittens_path %>
-  <%= link_to "Delete Kitten", kitten_path(@kitten), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  <%= link_to "Home", kittens_path %> <br>
+  <%= link_to "Edit Kitten", edit_kitten_path(@kitten), 
+      data: {turbo_method: :get, 
+      turbo_confirm: "Do you want to edit #{@kitten.name}?"} %>
+  <br>
+  <%= link_to "Delete Kitten", kitten_path(@kitten), 
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  <br>
 </div>

@@ -1,10 +1,20 @@
 class KittensController < ApplicationController
   def index
     @kittens = Kitten.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @kittens }
+    end
   end
 
   def show
     @kitten = Kitten.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @kitten }
+    end
   end
 
   def new
@@ -12,7 +22,7 @@ class KittensController < ApplicationController
   end
 
   def edit
-    @kitten = Kitten.new
+    @kitten = Kitten.find(params[:id])
   end
 
   def create
@@ -28,7 +38,7 @@ class KittensController < ApplicationController
 
   def update
     @kitten = Kitten.find[params[:id]]
-    @kitten.update!(kitte_params)
+    @kitten.update!(kitten_params)
     if @kitten.save
       flash[:success] = "Kitten updated successfully"
       redirect_to @kitten
