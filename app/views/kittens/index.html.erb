@@ -1,0 +1,16 @@
+<h1>Kittens</h1>
+
+<%= link_to "Add Kitten", new_kitten_path %>
+
+<hr>
+<% Kitten.all.each do |kitten| %>
+  <div>
+    <h3><%= kitten.name %></h3>
+    <p>
+      Age: <%= kitten.age %>
+    </p>
+    <%= link_to "Show More", kitten_path(kitten) %>
+    <hr>
+  </div>
+
+<% end %>
